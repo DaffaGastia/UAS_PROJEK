@@ -8,8 +8,14 @@
 
         <div class="mb-4">
             <strong>Nama Customer:</strong> {{ $order->user->name }} <br>
-            <strong>Total Harga:</strong> Rp {{ number_format($order->total_price, 0, ',', '.') }} <br>
-            <strong>Status Sekarang:</strong> 
+            
+            <strong>Tanggal Pesanan:</strong> 
+            {{ $order->created_at->format('d M Y, H:i') }} <br>
+
+            <strong>Total Harga:</strong> 
+            Rp {{ number_format($order->total_price, 0, ',', '.') }} <br>
+
+            <strong>Status Sekarang:</strong>
             <span class="badge bg-primary">{{ ucfirst($order->status) }}</span>
         </div>
 

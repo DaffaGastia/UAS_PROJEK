@@ -13,6 +13,8 @@ class Order extends Model
         'user_id',
         'total_price',
         'status',
+        'payment_method',
+        'payment_status',
     ];
 
     public function user()
@@ -23,5 +25,15 @@ class Order extends Model
     public function items()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function getTotalItemsAttribute()
+    {
+        return $this->items->sum('qty');
+    }
+
+    public function getFormattedTotalPriceAttribute()
+    {
+        return number_format($this->total_price, 0, ',', '.');
     }
 }
