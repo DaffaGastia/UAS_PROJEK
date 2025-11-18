@@ -26,6 +26,9 @@
     <div class="container admin-container">
         @yield('content')
     </div>
+    
+        {{-- SCRIPT PLACEHOLDER --}}
+    @yield('scripts')
 
 </body>
 </html>
