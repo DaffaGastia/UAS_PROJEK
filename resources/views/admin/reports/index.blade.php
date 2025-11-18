@@ -14,10 +14,21 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-bold">Laporan Penjualan</h3>
 
-    {{-- Tombol PDF Baru --}}
-    <button id="downloadPDF" class="btn btn-danger">
-        Download PDF
-    </button>
+    <div class="d-flex gap-2">
+        {{-- Tombol PDF --}}
+        <button id="downloadPDF" class="btn btn-danger">
+            Download PDF
+        </button>
+
+        {{-- Tombol Excel --}}
+        <button onclick="exportExcel()" class="btn btn-primary">
+            Download CSV
+        </button>
+        <button onclick="exportXLSX()" class="btn btn-success">
+            Download Excel
+        </button>
+
+    </div>
 </div>
 
 {{-- Semua laporan dibungkus agar bisa di-export --}}
@@ -54,7 +65,7 @@
 
     <div class="card shadow-sm">
         <div class="card-body p-0">
-            <table class="table table-hover table-bordered mb-0">
+            <table class="table table-hover table-bordered mb-0" id="reportTable">
                 <thead class="table-dark">
                     <tr>
                         <th width="50px">No</th>
@@ -114,14 +125,16 @@
 
 @endsection
 
-{{-- SCRIPT UNTUK CONVERT PDF --}}
+{{-- SCRIPT PDF + EXCEL --}}
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+{{-- SheetJS for Excel (.xlsx) --}}
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 <script>
 document.getElementById('downloadPDF').addEventListener('click', function () {
     const element = document.getElementById('reportArea');
-
     html2pdf().set({
         margin: 10,
         filename: 'laporan_penjualan.pdf',
@@ -130,5 +143,32 @@ document.getElementById('downloadPDF').addEventListener('click', function () {
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     }).from(element).save();
 });
+
+function exportExcel() {
+    let table = document.getElementById("reportTable");
+    let rows = table.querySelectorAll("tr");
+    let csvContent = "";
+    rows.forEach(row => {
+        let cols = row.querySelectorAll("th, td");
+        let rowData = [];
+        cols.forEach(col => {
+            rowData.push('"' + col.innerText.replace(/"/g, '""') + '"');
+        });
+        csvContent += rowData.join(",") + "\n";
+    });
+    let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    let downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = "laporan_penjualan.csv";
+    downloadLink.click();
+}
+
+function exportXLSX() {
+    let table = document.getElementById("reportTable");
+    let worksheet = XLSX.utils.table_to_sheet(table);
+    let workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Laporan Penjualan");
+    XLSX.writeFile(workbook, "laporan_penjualan.xlsx");
+}
 </script>
 @endsection
