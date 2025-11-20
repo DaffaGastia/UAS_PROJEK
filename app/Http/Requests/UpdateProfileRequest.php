@@ -19,13 +19,16 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules(): array
     {
+        $userId = session('customer_id'); 
+
         return [
             'name' => 'required|string|max:100',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $this->user()->id,
+            'email' => 'required|email|unique:users,email,' . $userId,
         ];
     }
+
 
     /**
      * Pesan error kustom (opsional).

@@ -18,10 +18,10 @@ class ProfileController extends Controller
 
     public function update(UpdateProfileRequest $request)
     {
-        $user = Auth::user() ?? User::find(session('customer_id'));
+        $user = User::findOrFail(session('customer_id')); 
         $data = $request->validated();
-        if (!empty($data['password'])) {
-            $data['password'] = Hash::make($data['password']);
+        if (!empty($request->password)) {
+            $data['password'] = Hash::make($request->password);
         } else {
             unset($data['password']);
         }
