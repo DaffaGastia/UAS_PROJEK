@@ -4,7 +4,7 @@
 @section('content')
 <div class="container py-5 text-center">
     <div class="card shadow-sm p-5 mx-auto" style="max-width: 500px;">
-        <h2 class="text-success fw-bold mb-3">✅ Pembayaran Berhasil!</h2>
+        <h2 class="text-success fw-bold mb-3">Pembayaran Berhasil!</h2>
         <p class="lead">Terima kasih telah berbelanja di <strong>Mocha Jane Bakery</strong>.</p>
         <p>Pesanan kamu sedang diproses dan akan segera dikirimkan.</p>
 

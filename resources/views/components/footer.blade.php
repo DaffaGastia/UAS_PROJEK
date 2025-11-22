@@ -21,19 +21,16 @@
                 </p>
             </div>
             
-            <div class="col-md-4">
+            <div class="col-md-4 footer-social">
                 <h6 class="fw-bold mb-3">Ikuti Kami</h6>
-                <div class="d-flex gap-3">
-                    <a href="#" class="text-white fs-4" title="Instagram">
+                <div class="icons">
+                    <a href="https://www.instagram.com/mochaandjane?igsh=NXNraG5hMnY3bnI3" class="text-white fs-4" title="Instagram">
                         <i class="bi bi-instagram"></i>
                     </a>
-                    <a href="#" class="text-white fs-4" title="Facebook">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="#" class="text-white fs-4" title="WhatsApp">
+                    <a href="https://wa.me/6282141627995" class="text-white fs-4" title="WhatsApp">
                         <i class="bi bi-whatsapp"></i>
                     </a>
-                    <a href="#" class="text-white fs-4" title="TikTok">
+                    <a href="https://www.tiktok.com/@mochaandjane?_r=1&_t=ZS-91c8Zu4NesB" class="text-white fs-4" title="TikTok">
                         <i class="bi bi-tiktok"></i>
                     </a>
                 </div>
