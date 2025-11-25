@@ -25,7 +25,7 @@ class AdminProductController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $data['image'] = 'storage/' . $request->file('image')->store('products', 'public');
+            $data['image'] = $request->file('image')->store('products', 'public');
         }
 
         Product::create($data);
@@ -45,7 +45,7 @@ class AdminProductController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $data['image'] = 'storage/' . $request->file('image')->store('products', 'public');
+            $data['image'] = $request->file('image')->store('products', 'public');
         }
 
         $product->update($data);

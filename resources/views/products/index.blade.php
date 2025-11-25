@@ -14,7 +14,7 @@
 
                 <div class="image-wrapper position-relative overflow-hidden">
                     <img 
-                        src="{{ $product->image ? asset($product->image) : 'https://via.placeholder.com/400x400' }}" 
+                        src="{{ $product->image ? asset('storage/'.$product->image) : 'https://via.placeholder.com/400x400' }}" 
                         alt="{{ $product->name }}" 
                         class="card-img-top product-image">
                     <div class="image-overlay"></div>
