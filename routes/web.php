@@ -93,8 +93,10 @@ Route::middleware('customer.auth')->group(function () {
 | Chat AI
 |--------------------------------------------------------------------------
 */
-Route::get('/chat-ai', fn() => view('chat.index'));
-Route::post('/chat-ai', [ChatAIController::class, 'send'])->name('chat.ai');
+Route::get('/chat-ai', [App\Http\Controllers\ChatAIController::class, 'index'])
+    ->name('chat.index');
+Route::post('/chat-ai/send', [App\Http\Controllers\ChatAIController::class, 'sendMessage'])
+    ->name('chat.send');
 
 /*
 |--------------------------------------------------------------------------
