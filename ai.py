@@ -3,7 +3,6 @@ import json
 import time
 import os
 
-API_KEY = "AIzaSyAZkrMBKJX3io0o0Pdagz5rG25bItppGco"
 MODEL = "gemini-2.0-flash"
 URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 
