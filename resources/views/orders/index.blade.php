@@ -3,7 +3,6 @@
 
 @section('content')
 <div class="orders-container">
-    <!-- Hero Section -->
     <div class="orders-hero text-center mb-4">
         <div class="hero-icon">
             <i class="bi bi-receipt-cutoff"></i>
@@ -13,7 +12,7 @@
     </div>
 
     @if($orders->isEmpty())
-        <!-- Empty State -->
+
         <div class="empty-orders text-center py-5">
             <div class="empty-icon mb-4">
                 <i class="bi bi-bag-x"></i>
@@ -27,7 +26,7 @@
             </a>
         </div>
     @else
-        <!-- Order Stats -->
+
         <div class="row g-3 mb-4">
             <div class="col-md-4">
                 <div class="card stat-card border-0 shadow-sm">
@@ -70,11 +69,10 @@
             </div>
         </div>
 
-        <!-- Orders List -->
         <div class="orders-list">
             @foreach($orders as $order)
                 <div class="card order-card border-0 shadow-sm mb-3">
-                    <!-- Order Header -->
+
                     <div class="card-header order-header bg-white py-3">
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                             <div class="d-flex align-items-center gap-3">
@@ -119,17 +117,17 @@
                         </div>
                     </div>
 
-                    <!-- Order Body -->
                     <div class="card-body py-3">
                         <div class="row align-items-center">
-                            <!-- Order Items Preview -->
                             <div class="col-md-6">
                                 <div class="order-items-preview d-flex align-items-center gap-3">
                                     <div class="items-images d-flex">
                                         @foreach($order->items->take(3) as $item)
                                             <div class="item-thumb" title="{{ $item->product->name ?? 'Produk' }}">
                                                 <img 
-                                                    src="{{ asset($item->product->image ?? 'images/default-product.png') }}" 
+                                                    src="{{ $item->product->image 
+                                                        ? asset('storage/'.$item->product->image) 
+                                                        : asset('images/default-product.png') }}"
                                                     alt="{{ $item->product->name ?? 'Produk' }}">
                                             </div>
                                         @endforeach
@@ -148,7 +146,6 @@
                                 </div>
                             </div>
 
-                            <!-- Payment Method -->
                             <div class="col-md-3">
                                 <div class="payment-method-info">
                                     <p class="text-muted small mb-1">Metode Pembayaran</p>
@@ -159,7 +156,6 @@
                                 </div>
                             </div>
 
-                            <!-- Total Price -->
                             <div class="col-md-3 text-md-end">
                                 <div class="order-total">
                                     <p class="text-muted small mb-1">Total Pembayaran</p>
@@ -171,10 +167,8 @@
                         </div>
                     </div>
 
-                    <!-- Order Footer -->
                     <div class="card-footer order-footer bg-white border-top py-3">
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                            <!-- Order Timeline -->
                             <div class="order-timeline d-flex align-items-center gap-2">
                                 <div class="timeline-step completed">
                                     <i class="bi bi-bag-check"></i>

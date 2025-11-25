@@ -11,7 +11,6 @@ class RegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // true agar semua bisa akses (tidak dibatasi middleware auth)
         return true;
     }
 

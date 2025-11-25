@@ -17,11 +17,10 @@ class OrderItemFactory extends Factory
         $product = Product::factory()->create();
 
         return [
-            // by default create a new order; override by passing order_id when needed
             'order_id' => Order::factory(),
             'product_id' => $product->id,
             'qty' => $this->faker->numberBetween(1, 5),
-            'price' => $product->price, // capture product price at time of order
+            'price' => $product->price, 
             'created_at' => now(),
             'updated_at' => now(),
         ];

@@ -14,7 +14,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('qty');
-            $table->integer('price'); // harga satuan pada saat diorder
+            $table->integer('price'); 
 
             $table->timestamps();
 

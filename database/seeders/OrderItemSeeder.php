@@ -28,7 +28,7 @@ class OrderItemSeeder extends Seeder
                 ]);
             }
 
-            // Update total price
+            
             $order->update([
                 'total_price' => $order->items->sum(fn($i) => $i->qty * $i->price)
             ]);

@@ -39,7 +39,7 @@
                                     <div class="col-md-2 col-3">
                                         <div class="item-image-wrapper">
                                             <img 
-                                                src="{{ asset($item['image'] ?? 'images/default-product.png') }}" 
+                                                src="{{ $item['image'] ? asset('storage/'.str_replace('storage/', '', $item['image'])) : asset('images/default-product.png') }}" 
                                                 alt="{{ $item['name'] }}" 
                                                 class="img-fluid rounded">
                                         </div>

@@ -13,9 +13,8 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            // by default create a new customer user; override by passing user_id when needed
             'user_id' => User::factory(),
-            'total_price' => 0, // biasanya akan diupdate setelah order_items dibuat
+            'total_price' => 0, 
             'status' => 'pending',
             'created_at' => now(),
             'updated_at' => now(),

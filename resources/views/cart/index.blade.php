@@ -17,7 +17,6 @@
 
 @if(count($cart) > 0)
     <div class="row g-4">
-        <!-- Cart Items -->
         <div class="col-lg-8">
             <div class="card cart-card border-0 shadow-sm">
                 <div class="card-header bg-white border-0 py-3">
@@ -30,11 +29,10 @@
                     @foreach($cart as $id => $item)
                         <div class="cart-item p-3 border-bottom">
                             <div class="row align-items-center g-3">
-                                <!-- Product Image -->
                                 <div class="col-md-2 col-3">
                                     <div class="cart-image-wrapper">
                                         <img 
-                                            src="{{ asset($item['image']) }}" 
+                                            src="{{ $item['image'] ? asset('storage/'.str_replace('storage/', '', $item['image'])) : asset('images/default-product.png') }}" 
                                             alt="{{ $item['name'] }}" 
                                             class="img-fluid rounded cart-item-image">
                                     </div>
