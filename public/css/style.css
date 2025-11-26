@@ -1781,3 +1781,8 @@ footer a:hover {
 .page-item .page-link:hover {
     background-color: #e9ecef !important;
 }
+
+.status-badge.status-dibatalkan {
+    background: #ffebee;
+    color: #d32f2f;
+}

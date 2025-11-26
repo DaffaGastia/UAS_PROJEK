@@ -98,6 +98,8 @@
                                         <i class="bi bi-truck me-1"></i>Dikirim
                                     @elseif($order->status == 'selesai')
                                         <i class="bi bi-check-circle me-1"></i>Selesai
+                                    @elseif($order->status == 'dibatalkan')
+                                        <i class="bi bi-x-circle me-1"></i>Dibatalkan
                                     @else
                                         <i class="bi bi-x-circle me-1"></i>{{ ucfirst($order->status) }}
                                     @endif
@@ -203,13 +205,18 @@
                 </div>
             @endforeach
         </div>
-
-        <!-- Pagination -->
-        <!-- @if($orders->hasPages())
-            <div class="d-flex justify-content-center mt-4">
-                {{ $orders->links() }}
+        @if($orders->hasPages())
+            <div class="card-footer bg-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        Menampilkan {{ $orders->firstItem() }} - {{ $orders->lastItem() }} dari {{ $orders->total() }} pesanan
+                    </small>
+                    <div>
+                        {{ $orders->appends(request()->query())->links('pagination::bootstrap-5') }}
+                    </div>
+                </div>
             </div>
-        @endif -->
+        @endif
     @endif
 </div>
 @endsection
