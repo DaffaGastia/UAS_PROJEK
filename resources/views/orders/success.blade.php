@@ -7,6 +7,7 @@
         <h2 class="text-success fw-bold mb-3">Pembayaran Berhasil!</h2>
         <p class="lead">Terima kasih telah berbelanja di <strong>Mocha Jane Bakery</strong>.</p>
         <p>Pesanan kamu sedang diproses dan akan segera dikirimkan.</p>
+        <p>Silahkan Hubungi Pihak Toko MochaJane Dibagian Bawah Untuk Konfirmasi Lebih Lanjut Dan Juga Bukti Pembayaran.</p>
 
         <div class="mt-4">
             <a href="{{ route('orders.index') }}" class="btn btn-primary">Lihat Pesanan Saya</a>
