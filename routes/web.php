@@ -47,18 +47,17 @@ Route::middleware('admin.auth')->prefix('admin')->group(function () {
     Route::post('/products/{id}', [AdminProductController::class, 'update'])->name('admin.products.update');
     Route::delete('/products/{id}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
 
-    // Pesanan
     // Orders Management
-    Route::get('/orders', [App\Http\Controllers\Admin\AdminOrderController::class, 'index'])
+    Route::get('/orders', [AdminOrderController::class, 'index'])
         ->name('admin.orders.index');
     
-    Route::get('/orders/{id}', [App\Http\Controllers\Admin\AdminOrderController::class, 'show'])
+    Route::get('/orders/{id}', [AdminOrderController::class, 'show'])
         ->name('admin.orders.show');
     
-    Route::put('/orders/{id}/update-status', [App\Http\Controllers\Admin\AdminOrderController::class, 'updateStatus'])
+    Route::put('/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])
         ->name('admin.orders.update-status');
     
-    Route::delete('/orders/{id}', [App\Http\Controllers\Admin\AdminOrderController::class, 'destroy'])
+    Route::delete('/orders/{id}', [AdminOrderController::class, 'destroy'])
         ->name('admin.orders.destroy');
 
     // Laporan
@@ -102,9 +101,9 @@ Route::middleware('customer.auth')->group(function () {
 | Chat AI
 |--------------------------------------------------------------------------
 */
-Route::get('/chat-ai', [App\Http\Controllers\ChatAIController::class, 'index'])
+Route::get('/chat-ai', [ChatAIController::class, 'index'])
     ->name('chat.index');
-Route::post('/chat-ai/send', [App\Http\Controllers\ChatAIController::class, 'sendMessage'])
+Route::post('/chat-ai/send', [ChatAIController::class, 'sendMessage'])
     ->name('chat.send');
 
 /*
