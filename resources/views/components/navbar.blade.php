@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <!-- Logo -->
         <a class="navbar-brand fw-bold" href="/">
             Mocha Jane
         </a>
-        <!-- Mobile Button -->
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,7 +21,6 @@
                 <li class="nav-item">
                     <a href="{{ route('checkout.form') }}" class="nav-link">Checkout</a>
                 </li>
-                <!-- 🔥 Menu Baru: Pesanan Saya -->
                 <li class="nav-item">
                     <a href="{{ route('orders.index') }}" class="nav-link">
                         Pesanan Saya

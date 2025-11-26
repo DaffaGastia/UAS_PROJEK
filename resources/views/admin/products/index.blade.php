@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container-fluid py-4">
-    <!-- Header Section -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
@@ -18,7 +17,6 @@
         </div>
     </div>
 
-    <!-- Alert Section -->
     @if(session('success'))
     <div class="row mb-4">
         <div class="col-12">
@@ -31,7 +29,6 @@
     </div>
     @endif
 
-    <!-- Stats Cards (Optional) -->
     <div class="row mb-4">
         <div class="col-md-3 mb-3">
             <div class="card border-0 shadow-sm h-100">
@@ -95,7 +92,6 @@
         </div>
     </div>
 
-    <!-- Table Section -->
     <div class="row">
         <div class="col-12">
             <div class="card border-0 shadow-sm">
@@ -218,7 +214,6 @@
                         <small class="text-muted">
                             Menampilkan {{ $products->count() }} produk
                         </small>
-                        <!-- Pagination jika diperlukan -->
                         {{-- {{ $products->links() }} --}}
                     </div>
                 </div>
@@ -260,7 +255,6 @@
 
 @push('scripts')
 <script>
-    // Initialize Bootstrap tooltips
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)

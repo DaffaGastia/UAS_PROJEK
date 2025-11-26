@@ -48,9 +48,18 @@ Route::middleware('admin.auth')->prefix('admin')->group(function () {
     Route::delete('/products/{id}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
 
     // Pesanan
-    Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
-    Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('admin.orders.show'); 
-    Route::post('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.status');
+    // Orders Management
+    Route::get('/orders', [App\Http\Controllers\Admin\AdminOrderController::class, 'index'])
+        ->name('admin.orders.index');
+    
+    Route::get('/orders/{id}', [App\Http\Controllers\Admin\AdminOrderController::class, 'show'])
+        ->name('admin.orders.show');
+    
+    Route::put('/orders/{id}/update-status', [App\Http\Controllers\Admin\AdminOrderController::class, 'updateStatus'])
+        ->name('admin.orders.update-status');
+    
+    Route::delete('/orders/{id}', [App\Http\Controllers\Admin\AdminOrderController::class, 'destroy'])
+        ->name('admin.orders.destroy');
 
     // Laporan
     Route::get('/reports', [ReportController::class, 'index'])->name('admin.reports.index');

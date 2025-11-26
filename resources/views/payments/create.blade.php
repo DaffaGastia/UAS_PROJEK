@@ -5,10 +5,10 @@
 
 <div class="card shadow-sm p-4">
     <h4 class="mb-3">Pilih Metode Pembayaran</h4>
-
+    
     <form action="{{ route('payments.store', $order->id) }}" method="POST">
         @csrf
-
+        
         <div class="mb-3">
             <label class="form-label">Metode Pembayaran</label>
             <select name="method" id="method" class="form-select" onchange="toggleDetails()">
@@ -17,8 +17,7 @@
                 <option value="QRIS">QRIS</option>
             </select>
         </div>
-
-        <!-- Transfer Bank -->
+        
         <div id="bankDetails" class="mb-3" style="display:none;">
             <label class="form-label">Pilih Bank</label>
             <select name="details" class="form-select">
@@ -28,13 +27,11 @@
                 <option value="Mandiri">Mandiri - 444555666 a.n Mocha Jane Bakery</option>
             </select>
         </div>
-
-        <!-- QRIS -->
+        
         <div id="qrisDetails" style="display:none;">
             <p>Scan QRIS untuk melanjutkan pembayaran:</p>
             <img src="/images/qris.png" width="200" class="border rounded">
         </div>
-
         <button type="submit" class="btn btn-primary mt-3">Konfirmasi Pembayaran</button>
     </form>
 </div>

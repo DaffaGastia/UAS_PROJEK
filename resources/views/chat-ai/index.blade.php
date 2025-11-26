@@ -5,9 +5,7 @@
 <div class="chat-container">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
-            <!-- Chat Card -->
             <div class="card chat-card border-0 shadow">
-                <!-- Chat Header -->
                 <div class="card-header chat-header">
                     <div class="d-flex align-items-center">
                         <div class="chat-avatar me-3">
@@ -31,9 +29,7 @@
                     </div>
                 </div>
 
-                <!-- Chat Messages -->
                 <div class="card-body chat-messages" id="chatMessages">
-                    <!-- Welcome Message -->
                     <div class="message bot-message">
                         <div class="message-avatar">
                             <i class="bi bi-robot"></i>
@@ -48,7 +44,6 @@
                         </div>
                     </div>
 
-                    <!-- Quick Actions -->
                     <div class="quick-actions">
                         <p class="quick-label">Pertanyaan Populer:</p>
                         <div class="quick-buttons">
@@ -68,7 +63,6 @@
                     </div>
                 </div>
 
-                <!-- Chat Input -->
                 <div class="card-footer chat-input-wrapper">
                     <form id="chatForm" class="chat-form">
                         @csrf
@@ -92,7 +86,6 @@
                 </div>
             </div>
 
-            <!-- Info Card -->
             <div class="card info-card border-0 shadow-sm mt-3">
                 <div class="card-body py-3">
                     <div class="d-flex align-items-center justify-content-center gap-4 flex-wrap">
@@ -127,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearBtn = document.getElementById('clearChat');
     const quickBtns = document.querySelectorAll('.quick-btn');
 
-    // Send message
     chatForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const message = messageInput.value.trim();
@@ -136,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Quick action buttons
     quickBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const message = this.dataset.message;
@@ -144,30 +135,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Clear chat
     clearBtn.addEventListener('click', function() {
         if (confirm('Hapus semua riwayat chat?')) {
             const messages = chatMessages.querySelectorAll('.message:not(:first-child), .quick-actions');
             messages.forEach(msg => msg.remove());
             
-            // Re-add quick actions
             addQuickActions();
         }
     });
 
     function sendMessage(message) {
-        // Add user message
         appendMessage(message, 'user');
         messageInput.value = '';
         
-        // Hide quick actions
         const quickActions = chatMessages.querySelector('.quick-actions');
         if (quickActions) quickActions.style.display = 'none';
 
-        // Show typing indicator
         showTyping();
 
-        // Send to API
         fetch('{{ route("chat.send") }}', {
             method: 'POST',
             headers: {
@@ -196,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const time = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
         const icon = sender === 'bot' ? 'bi-robot' : 'bi-person-fill';
         
-        // Format text (convert newlines and markdown-like formatting)
         const formattedText = text
             .replace(/\n/g, '<br>')
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
@@ -265,7 +249,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         chatMessages.insertAdjacentHTML('beforeend', quickActionsHtml);
         
-        // Re-attach event listeners
         document.querySelectorAll('.quick-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 sendMessage(this.dataset.message);
