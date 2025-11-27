@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $query = Product::query();
+        if ($request->has('search') && $request->search !== '') {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+        $products = $query->get();
         return view('admin.products.index', compact('products'));
     }
 

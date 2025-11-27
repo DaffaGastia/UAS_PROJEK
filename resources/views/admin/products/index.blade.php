@@ -102,10 +102,22 @@
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <span class="input-group-text bg-white border-end-0">
+                                <!-- <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-search"></i>
-                                </span>
-                                <input type="text" class="form-control border-start-0" placeholder="Cari produk...">
+                                </span> -->
+                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="bi bi-search"></i>
+                                        </span>
+                                        <input type="text"
+                                            name="search"
+                                            class="form-control border-start-0"
+                                            placeholder="Cari produk..."
+                                            value="{{ request('search') }}">
+                                        <button class="btn btn-primary" type="submit">Cari</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
