@@ -15,7 +15,7 @@ class RegisterRequest extends FormRequest
     }
 
     /**
-     * Aturan validasi untuk pendaftaran customer.
+     * Aturan validasi .
      */
     public function rules(): array
     {
@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
     }
 
     /**
-     * Pesan error kustom (opsional, tapi membantu user).
+     * Pesan error .
      */
     public function messages(): array
     {

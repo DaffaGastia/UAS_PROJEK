@@ -103,7 +103,7 @@
                 </div>
             </div>
             
-            <div class="card border-0 shadow-sm mt-3">
+            <!-- <div class="card border-0 shadow-sm mt-3">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center">
                         <div class="promo-icon me-3">
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 @else

@@ -30,7 +30,7 @@
         
         <div id="qrisDetails" style="display:none;">
             <p>Scan QRIS untuk melanjutkan pembayaran:</p>
-            <img src="/images/qris.png" width="200" class="border rounded">
+            <img src="{{ asset('images/contohqr.jpg') }}" width="200" class="border rounded">
         </div>
         <button type="submit" class="btn btn-primary mt-3">Konfirmasi Pembayaran</button>
     </form>
