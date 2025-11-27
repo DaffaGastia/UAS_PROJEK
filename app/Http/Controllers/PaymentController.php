@@ -28,7 +28,7 @@ class PaymentController extends Controller
             $orderStatus   = 'diproses';
         } else {
             $paymentStatus = 'success';
-            $orderStatus   = 'selesai';
+            $orderStatus   = 'diproses';
         }
 
         Payment::create([
