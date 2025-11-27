@@ -88,7 +88,6 @@
                             </div>
                             
                             <div class="d-flex gap-2">
-                                <!-- Order Status -->
                                 <span class="badge status-badge status-{{ $order->status }}">
                                     @if($order->status == 'pending')
                                         <i class="bi bi-clock me-1"></i>Pending
@@ -105,7 +104,6 @@
                                     @endif
                                 </span>
                                 
-                                <!-- Payment Status -->
                                 <span class="badge payment-badge payment-{{ $order->payment_status ?? 'pending' }}">
                                     @if($order->payment_status == 'success')
                                         <i class="bi bi-check2-circle me-1"></i>Lunas

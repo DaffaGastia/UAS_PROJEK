@@ -39,7 +39,6 @@ Route::get('/admin/logout', [AuthAdminController::class, 'logout'])->name('admin
 
 Route::middleware('admin.auth')->prefix('admin')->group(function () {
 
-    // Produk
     Route::get('/products', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
     Route::post('/products', [AdminProductController::class, 'store'])->name('admin.products.store');
@@ -47,20 +46,11 @@ Route::middleware('admin.auth')->prefix('admin')->group(function () {
     Route::post('/products/{id}', [AdminProductController::class, 'update'])->name('admin.products.update');
     Route::delete('/products/{id}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
 
-    // Orders Management
-    Route::get('/orders', [AdminOrderController::class, 'index'])
-        ->name('admin.orders.index');
-    
-    Route::get('/orders/{id}', [AdminOrderController::class, 'show'])
-        ->name('admin.orders.show');
-    
-    Route::put('/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])
-        ->name('admin.orders.update-status');
-    
-    Route::delete('/orders/{id}', [AdminOrderController::class, 'destroy'])
-        ->name('admin.orders.destroy');
+    Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
+    Route::put('/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.update-status');
+    Route::delete('/orders/{id}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
 
-    // Laporan
     Route::get('/reports', [ReportController::class, 'index'])->name('admin.reports.index');
     Route::get('/reports/pdf', [ReportController::class, 'downloadPdf'])->name('admin.reports.pdf');
 });
@@ -73,25 +63,20 @@ Route::middleware('admin.auth')->prefix('admin')->group(function () {
 */
 Route::middleware('customer.auth')->group(function () {
 
-    // Cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/add/{product_id}', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/update/{product_id}', [CartController::class, 'updateQty'])->name('cart.update');
     Route::post('/cart/remove/{product_id}', [CartController::class, 'remove'])->name('cart.remove');
 
-    // Checkout
     Route::get('/checkout', [CheckoutController::class, 'checkoutForm'])->name('checkout.form');
     Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
 
-    // Payment
     Route::get('/payments/{order_id}', [PaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments/{order_id}', [PaymentController::class, 'store'])->name('payments.store');
 
-    // Orders
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 
-    // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
@@ -101,10 +86,8 @@ Route::middleware('customer.auth')->group(function () {
 | Chat AI
 |--------------------------------------------------------------------------
 */
-Route::get('/chat-ai', [ChatAIController::class, 'index'])
-    ->name('chat.index');
-Route::post('/chat-ai/send', [ChatAIController::class, 'sendMessage'])
-    ->name('chat.send');
+Route::get('/chat-ai', [ChatAIController::class, 'index'])->name('chat.index');
+Route::post('/chat-ai/send', [ChatAIController::class, 'sendMessage'])->name('chat.send');
 
 /*
 |--------------------------------------------------------------------------

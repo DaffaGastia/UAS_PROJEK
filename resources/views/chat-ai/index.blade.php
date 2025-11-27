@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-            <div class="card info-card border-0 shadow-sm mt-3">
+            <!-- <div class="card info-card border-0 shadow-sm mt-3">
                 <div class="card-body py-3">
                     <div class="d-flex align-items-center justify-content-center gap-4 flex-wrap">
                         <div class="info-item">
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
